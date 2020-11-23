@@ -379,7 +379,7 @@ void intro()
 	cout<<"\n\n\n\t  BANK";
 	cout<<"\n\n\tMANAGEMENT";
 	cout<<"\n\n\t  SYSTEM";
-	cout<<"\n\n\n\nMADE BY: Ishaan Dixit\nPrasad Gole\nNiteesh Kumar\nSatwik";
+	cout<<"\n\n\n\nMADE BY: Ishan Dixit\nPrasad Gole\nNiteesh Kumar\nSatwik";
 	cout<<"\n\nDSA Group Project";
 	cin.get();
 }
