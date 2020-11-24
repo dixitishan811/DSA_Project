@@ -1,3 +1,117 @@
+//New code
+
+*****************************************
+#include <iostream>
+#include <stdlib.h>
+#include<map>
+#include<vector>
+#include <bits/stdc++.h> 
+using namespace std;
+struct QNode { 
+    string data; 
+
+    QNode* next; 
+    QNode(string d) 
+    { 
+        data = d; 
+        next = NULL; 
+    } 
+}; 
+  
+struct Queue { 
+    int n=0;
+    QNode *front, *rear; 
+    Queue() 
+    { 
+        front = rear = NULL; 
+    } 
+  
+    void enQueue(string x) 
+    { 
+  
+        // Create a new LL node 
+        n++;
+        QNode* temp = new QNode(x); 
+  
+        // If queue is empty, then 
+        // new node is front and rear both 
+        if (rear == NULL) { 
+            front = rear = temp; 
+            return; 
+        } 
+  
+        // Add the new node at 
+        // the end of queue and change rear 
+        rear->next = temp; 
+        rear = temp; 
+    } 
+  
+    // Function to remove 
+    // a key from given queue q 
+    void deQueue() 
+    {   n--;
+        // If queue is empty, return NULL. 
+        if (front == NULL) 
+            return; 
+  
+        // Store previous front and 
+        // move front one node ahead 
+        QNode* temp = front; 
+        front = front->next; 
+  
+        // If front becomes NULL, then 
+        // change rear also as NULL 
+        if (front == NULL) 
+            rear = NULL; 
+  
+        delete (temp); 
+    } 
+    void disp()
+    {    QNode* temp;
+        temp=front;
+        cout<<front->data<<endl;
+        while(temp->next!=NULL)
+        {   temp=temp->next;
+            cout<<temp->data<<endl;
+        }
+    }
+}; 
+  
+// Driven Program 
+int main() 
+{   map<string, int> dict;
+    int n;
+    
+
+    vector<int> deposit;
+    string name;
+    Queue q;
+    while(name!="0")
+    {
+        int x;
+        cin>>name;
+        cin>>x;
+        deposit.push_back(x);
+        if(name!="0")
+        {
+        q.enQueue(name);
+        dict.insert(std::pair<string,int>(name,rand()%1000000000));
+        }
+    }
+
+    q.disp();
+    for (auto itr = dict.begin(); itr != dict.end(); ++itr) 
+    {
+        cout << itr->first<< '\t' << itr->second << '\n';
+    }
+    //cout << "Queue Front : " << (q.front)->data << endl; 
+    //cout << "Queue Rear : " << (q.rear)->data; 
+    
+    
+} 
+*****************************************
+
+
 
 //***************************************************************
 //                   HEADER FILE USED IN PROJECT
