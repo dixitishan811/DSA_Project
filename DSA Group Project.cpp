@@ -133,11 +133,12 @@ struct Queue
         }
         
     }
+    
 	}
 	
 	}; 
 
-void write_account(vector<int>&deposit,Queue &q,map<string,int>&dict)		//create account
+void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create account
 {   
     string name;								
     int n=0;									
@@ -151,7 +152,7 @@ void write_account(vector<int>&deposit,Queue &q,map<string,int>&dict)		//create 
         cin>>x;									// Initial Deposit amount
         deposit.push_back(x);
         q.enQueue(name);
-        dict.insert(std::pair<string,int>(name,rand()%1000000000));		// creates a randomized 9 digit acc no.
+        dict.insert(std::pair<int,string>(rand()%1000000000,name));		// creates a randomized 9 digit acc no.
     }
 }
 
@@ -172,10 +173,10 @@ void withdraw(string name,int x,vector<int>&deposit,Queue &q)			// withdrawning 
     deposit[n]-=x;
 }
 
-void display_all(map<string,int>&dict,vector<int>&deposit)			// View all Accounts
+void display_all(map<int,string>&dict,vector<int>&deposit)			// View all Accounts
 {
     int i=0;
-    cout<<"Account holder's name"<<'\t'<<"Account no."<< '\t'<<"Balance"<<'\n';
+    cout<<"Account no."<<'\t'<<"Account holder's name"<< '\t'<<"Balance"<<'\n';
     for (auto itr = dict.begin(); itr != dict.end(); ++itr,++i) 
     {
         cout << itr->first<< '\t'  << '\t'<<'\t'<<itr->second << '\t'<<deposit[i]<<'\n';
@@ -203,7 +204,7 @@ int main()
 {   
     Queue q;
     string name;
-    map<string, int> dict;
+    map<int, string> dict;
     vector<int> deposit;
     intro();
     int n,x;
@@ -252,4 +253,3 @@ int main()
 	}while(ch!='8');
     
 } 
-
