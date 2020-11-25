@@ -1,9 +1,6 @@
-//New code
-
-
 #include <iostream>
 #include <stdlib.h>
-#include<map>
+#include<map>                                           // header files
 #include<vector>
 #include <bits/stdc++.h> 
 using namespace std;
@@ -32,7 +29,7 @@ struct Queue
     { 
   
         // Create a new LL node 
-        n++;
+        n++;                                            // increasing size of queue by 1
         QNode* temp = new QNode(x); 			// temporary node
   
         // If queue is empty, then 
@@ -168,9 +165,48 @@ deposit[n]+=x;
 void withdraw(string name,int x,vector<int>&deposit,Queue &q)			// withdrawning money
 {   
 	cout<<"Enter The account holder's name : "; cin>>name;
-	cout<<"Enter The amount to be withdrawn : "; cin>>x;
-    int n=q.find(name);
-    deposit[n]-=x;
+	cout<<"01.current\n02.savings\n";
+	int z;
+	cin>>z;
+	 int n=q.find(name);
+	if(z=1)
+	{
+	cout<<"Enter The amount to be withdrawn : "; cin>>x;	
+        if(deposit[n]<x)
+        {
+        cout<<"N0 sufficient amount";
+        }
+        else
+        {
+        deposit[n]-=x;
+        }
+	}
+	else
+	{
+	cout<<"Enter The amount to be withdrawn : "; cin>>x;	
+       
+        if(deposit[n]<x)
+        {
+        cout<<"N0 sufficient amount.\n";
+        }
+        else
+        {
+        deposit[n]-=x;
+        }
+	}
+	char e;
+	cout<<"Do you want to know your balance?\n";
+	cout<<" Y / N\n";
+	cin>>e;
+	
+	if(e=='Y') 
+	{
+	  cout<<"Balance"<<'\n';
+	  cout<<deposit[n]<<'\n';
+	}
+	
+	 //cout<<"Account no."<<'\t'<<"Account holder's name"<< '\t'<<"Balance"<<'\n';
+	 
 }
 
 void display_all(map<int,string>&dict,vector<int>&deposit)			// View all Accounts
@@ -182,15 +218,24 @@ void display_all(map<int,string>&dict,vector<int>&deposit)			// View all Account
         cout << itr->first<< '\t'  << '\t'<<'\t'<<itr->second << '\t'<<deposit[i]<<'\n';
     }
 }
+void balance_enquiry(string name,int x,vector<int>&deposit,Queue &q) {
+     cout<<"Enter The account holder's name : "; cin>>name;
+     int n=q.find(name);
+      cout<<"Balance"<<'\n';
+       cout<<deposit[n]<<'\n';
+     
+     
+    
+}
 
 
 
 	
 	
-	
+//	https://www.onlinegdb.com/online_c++_compiler#tab-stdin
 
 void intro()									// Intro Screen
-{
+{https://www.onlinegdb.com/online_c++_compiler#tab-stdin
 	cout<<"\n  BANK";
 	cout<<"\nMANAGEMENT";
 	cout<<"\n  SYSTEM";
@@ -209,21 +254,84 @@ int main()
     intro();
     int n,x;
     char ch;
-
-
+    int r;
+    cout<<"01.Bank Manager\n02.Customer";
+    cin>>r;
+    if(r==2)
+    { 
+    cout<<"Welcome...!\nHow was your Day\n";
+    
     do
 	{
-    system ("clear");
+	  
 	cout<<"MAIN MENU";
  	cout<<"\n01. NEW ACCOUNT";	
  	cout<<"\n02. DEPOSIT AMOUNT";
 	cout<<"\n03. WITHDRAW AMOUNT";
 	cout<<"\n04. BALANCE ENQUIRY";
 	cout<<"\n05. MODIFY AN ACCOUNT";
+	cout<<"\n06. EXIT";
 	//cout<<"\n07. MODIFY AN ACCOUNT";	cout<<"\n08. EXIT";
 	cout<<"\nSelect Your Option (1-8) ";
 	cout<<endl;
 	cin>>ch;
+	system ("clear");
+
+		switch(ch)
+		{
+		case '1':
+			write_account(deposit, q,dict);
+			q.disp();
+			break;
+		case '2':
+			dep( name, x,deposit, q);
+			break;
+		case '3': 
+			withdraw(name, x,deposit, q);
+			break;
+		case '4' :
+		    balance_enquiry(name, x,deposit, q);
+		    break;
+		case '5':
+			q.modify_account(dict);
+			break;
+		 case '6':
+			cout<<"\nThanks for using bank management system";
+			break;
+		}
+		
+	}
+	while(ch!='8');	
+	}
+	else if(r==1)
+	{
+	    string id = "2018A2PS0825H";
+	    int p = 12345;
+	    string y;
+	    cout<<"Enter ID-";
+	    cin>>y;
+	    cout<<"\nEnter Passcode-";
+	    int u;
+	    cin>>u;
+	    cout<<"\n";
+	    if(y==id&&u==p)
+	    {
+	     do
+	{
+	  
+	cout<<"MAIN MENU";
+ 	cout<<"\n01. NEW ACCOUNT";	
+ 	cout<<"\n02. DEPOSIT AMOUNT";
+	cout<<"\n03. WITHDRAW AMOUNT";
+	cout<<"\n04. BALANCE ENQUIRY";
+	cout<<"\n05. MODIFY AN ACCOUNT";
+	cout<<"\n06. Display All Account Details";
+	
+	//cout<<"\n07. MODIFY AN ACCOUNT";	cout<<"\n08. EXIT";
+	cout<<"\nSelect Your Option (1-8) ";
+	cout<<endl;
+	cin>>ch;
+	system ("clear");
 
 		switch(ch)
 		{
@@ -237,19 +345,44 @@ int main()
 		case '3': 
 
 			withdraw(name, x,deposit, q);
+			
 			break;
 	
-		case '4':
+		case '6':
 			display_all(dict,deposit);
+			break;
 			
 		case '5':
 			q.modify_account(dict);
 			break;
-		 case '8':
+		case '4' :
+		    balance_enquiry(name, x,deposit, q);
+		    break;
+		case '8':
 			cout<<"\nThanks for using bank management system";
 			break;
+		case '9':
+		    char k;
+		    cout<<"You Have Pressed Emergency.Was It A Mistake?\n Y / N \n";
+		    cin>>k;
+		    if (k=='Y') 
+		    {
+		    cout<<"Police On The Way\n";
+		    }
+		    else
+		    {
+		    cout<<"Help Cancelled\n";    
+		    }
+		    
 		}
-
-	}while(ch!='8');
+	
+	}
+           	while(ch!='8'); 
+	    }
+	    else {
+	        cout<<"Wrong Credentials\n";
+	    }
+	
+	}
     
-} 
+}
