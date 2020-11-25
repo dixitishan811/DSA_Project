@@ -88,16 +88,12 @@ struct Queue
 		    {   
 			return cnt;
 		    }
-
-
-
 		}
 
 		return -1;
 	    }
 	void disp()
-	    {    
-
+	    {   
 		QNode* temp;
 		temp=front;
 		cout<<front->data<<endl;
