@@ -1,6 +1,6 @@
 //New code
 
-*****************************************
+
 #include <iostream>
 #include <stdlib.h>
 #include<map>
@@ -102,6 +102,39 @@ struct Queue
 		    cout<<temp->data<<endl;
 		}
 	    }
+	void modify_account(map<int,string>&dict)                                      // Change account details
+	{   
+	    string x,c;
+	    cout<<"Enter account name to be modified and the value it is to be modified to :"<<endl;
+	    cin>>x;
+	    cin>>c;
+		QNode *temp;
+		temp=front;
+		if(!x.compare(temp->data))
+		    {   
+			temp->data=c;
+		    }
+    
+		while(temp->next!=NULL)
+		{  
+		    temp=temp->next;
+		
+		    if(!x.compare(temp->data))
+		    {   
+			temp->data=c;
+		    }
+		}
+		
+	    for (auto itr = dict.begin(); itr != dict.end(); ++itr) 
+    {   
+        if(itr->second==x)
+        {
+            itr->second=c;
+        }
+        
+    }
+	}
+	
 	}; 
 
 void write_account(vector<int>&deposit,Queue &q,map<string,int>&dict)		//create account
@@ -150,11 +183,7 @@ void display_all(map<string,int>&dict,vector<int>&deposit)			// View all Account
 }
 
 
-void modify_account(string name, vector<int>&amount, Queue q)			// Change account details
-{
-	cout<<"Enter The account holder's name : "; cin>>name;
-	cout<<"Enter The amount to be deposited : "; cin>>x;
-  
+
 	
 	
 	
@@ -180,34 +209,20 @@ int main()
     int n,x;
     char ch;
 
+
     do
 	{
-	    
-	    	system("cls");
-		cout<<"\n\n\n\tMAIN MENU";
-		cout<<"\n\n\t01. NEW ACCOUNT";
-		cout<<"\n\n\t02. DEPOSIT AMOUNT";
-		cout<<"\n\n\t03. WITHDRAW AMOUNT";
-		cout<<"\n\n\t04. BALANCE ENQUIRY";
-		cout<<"\n\n\t05. ALL ACCOUNT HOLDER LIST";
-		cout<<"\n\n\t06. CLOSE AN ACCOUNT";
-		cout<<"\n\n\t07. MODIFY AN ACCOUNT";
-		cout<<"\n\n\t08. EXIT";
-		cout<<"\n\n\tSelect Your Option (1-8) ";
-		cin>>ch;
-		system("cls");
-// 		cout<<"MAIN MENU";
-// 		cout<<"\n01. NEW ACCOUNT";
-// 		cout<<"\n02. DEPOSIT AMOUNT";
-// 		cout<<"\n03. WITHDRAW AMOUNT";
-// 		cout<<"\n04. BALANCE ENQUIRY";
-// 		//cout<<"\n05. ALL ACCOUNT HOLDER LIST";
-// 		//cout<<"\n06. CLOSE AN ACCOUNT";
-// 		//cout<<"\n07. MODIFY AN ACCOUNT";
-// 		cout<<"\n08. EXIT";
-// 		cout<<"\nSelect Your Option (1-8) ";
-// 		cout<<endl;
-// 		cin>>ch;
+
+	cout<<"MAIN MENU";
+ 	cout<<"\n01. NEW ACCOUNT";	
+ 	cout<<"\n02. DEPOSIT AMOUNT";
+	cout<<"\n03. WITHDRAW AMOUNT";
+	cout<<"\n04. BALANCE ENQUIRY";
+	cout<<"\n05. MODIFY AN ACCOUNT";
+	//cout<<"\n07. MODIFY AN ACCOUNT";	cout<<"\n08. EXIT";
+	cout<<"\nSelect Your Option (1-8) ";
+	cout<<endl;
+	cin>>ch;
 
 		switch(ch)
 		{
@@ -225,6 +240,9 @@ int main()
 	
 		case '4':
 			display_all(dict,deposit);
+			
+		case '5':
+			q.modify_account(dict);
 			break;
 		 case '8':
 			cout<<"\nThanks for using bank management system";
@@ -234,4 +252,4 @@ int main()
 	}while(ch!='8');
     
 } 
-*****************************************
+
