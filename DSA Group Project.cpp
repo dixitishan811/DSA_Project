@@ -148,6 +148,12 @@ void display_all(map<string,int>&dict,vector<int>&deposit)
         cout << itr->first<< '\t'  << '\t'<<'\t'<<itr->second << '\t'<<deposit[i]<<'\n';
     }
 }
+
+
+void modify_account(string name, vector<int>&amount, Queue q)
+{
+	cout<<"Enter The account holder's name : "; cin>>name;
+	cout<<"Enter The amount to be deposited : "; cin>>x;
   
 // Driver Program 
 int main() 
@@ -161,18 +167,32 @@ int main()
 
     do
 	{
-		cout<<"MAIN MENU";
-		cout<<"\n01. NEW ACCOUNT";
-		cout<<"\n02. DEPOSIT AMOUNT";
-		cout<<"\n03. WITHDRAW AMOUNT";
-		cout<<"\n04. BALANCE ENQUIRY";
-		//cout<<"\n05. ALL ACCOUNT HOLDER LIST";
-		//cout<<"\n06. CLOSE AN ACCOUNT";
-		//cout<<"\n07. MODIFY AN ACCOUNT";
-		cout<<"\n08. EXIT";
-		cout<<"\nSelect Your Option (1-8) ";
-		cout<<endl;
+	    
+	    	system("cls");
+		cout<<"\n\n\n\tMAIN MENU";
+		cout<<"\n\n\t01. NEW ACCOUNT";
+		cout<<"\n\n\t02. DEPOSIT AMOUNT";
+		cout<<"\n\n\t03. WITHDRAW AMOUNT";
+		cout<<"\n\n\t04. BALANCE ENQUIRY";
+		cout<<"\n\n\t05. ALL ACCOUNT HOLDER LIST";
+		cout<<"\n\n\t06. CLOSE AN ACCOUNT";
+		cout<<"\n\n\t07. MODIFY AN ACCOUNT";
+		cout<<"\n\n\t08. EXIT";
+		cout<<"\n\n\tSelect Your Option (1-8) ";
 		cin>>ch;
+		system("cls");
+// 		cout<<"MAIN MENU";
+// 		cout<<"\n01. NEW ACCOUNT";
+// 		cout<<"\n02. DEPOSIT AMOUNT";
+// 		cout<<"\n03. WITHDRAW AMOUNT";
+// 		cout<<"\n04. BALANCE ENQUIRY";
+// 		//cout<<"\n05. ALL ACCOUNT HOLDER LIST";
+// 		//cout<<"\n06. CLOSE AN ACCOUNT";
+// 		//cout<<"\n07. MODIFY AN ACCOUNT";
+// 		cout<<"\n08. EXIT";
+// 		cout<<"\nSelect Your Option (1-8) ";
+// 		cout<<endl;
+// 		cin>>ch;
 
 		switch(ch)
 		{
