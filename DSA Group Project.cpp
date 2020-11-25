@@ -14,26 +14,26 @@ struct QNode                                            // queue node
     QNode* next; 					// next node in list
     QNode(string d) 					// constructor
     { 							
-        data = d; 
-        next = NULL; 					//initiallizing
+        data = d; 					// assigning value to Node 
+        next = NULL; 					// initiallizing
     } 
 }; 
   
 struct Queue 						
 { 
     int n=0;
-    QNode *front, *rear; 
-    Queue() 						//constructor
+    QNode *front, *rear; 				// pointers to front and rear of Queue
+    Queue() 						// constructor
     { 
-        front = rear = NULL; 
+        front = rear = NULL; 				// initializing
     } 
   
-    void enQueue(string x) 
+    void enQueue(string x) 				// Adding new node to Queue with value x
     { 
   
         // Create a new LL node 
         n++;
-        QNode* temp = new QNode(x); 
+        QNode* temp = new QNode(x); 			// temporary node
   
         // If queue is empty, then 
         // new node is front and rear both 
@@ -50,7 +50,7 @@ struct Queue
   
     // Function to remove 
     // a key from given queue q 
-	void deQueue() 
+	void deQueue() 					// Deletion or deQueuing
 	{   n--;
 	// If queue is empty, return NULL. 
 	if (front == NULL) 
@@ -58,7 +58,7 @@ struct Queue
 
 	// Store previous front and 
 	// move front one node ahead 
-	QNode* temp = front; 
+	QNode* temp = front; 				// temporary node
 	front = front->next; 
 
 	// If front becomes NULL, then 
@@ -66,9 +66,9 @@ struct Queue
 	if (front == NULL) 
 	    rear = NULL; 
 
-	delete (temp); 
+	delete (temp); 					// freeing memory
 	} 
-	int find(string x)
+	int find(string x)				// finding particular node 
 	    {   
 
 		int cnt=0;
@@ -104,25 +104,25 @@ struct Queue
 	    }
 	}; 
 
-void write_account(vector<int>&deposit,Queue &q,map<string,int>&dict)
+void write_account(vector<int>&deposit,Queue &q,map<string,int>&dict)		//create account
 {   
-    string name;
-    int n;
+    string name;								
+    int n=0;									
     cout<<"Enter number of accounts to be created : ";
-    cin>>n;
+    cin>>n;									// creating multiple accounts at once
     cout<<"Enter account holder name and the initial deposit amount:"<<endl;
     for(int i=0;i<n;i++)
     {
         int x;
-        cin>>name;
-        cin>>x;
+        cin>>name;								// Account name
+        cin>>x;									// Initial Deposit amount
         deposit.push_back(x);
         q.enQueue(name);
-        dict.insert(std::pair<string,int>(name,rand()%1000000000));
+        dict.insert(std::pair<string,int>(name,rand()%1000000000));		// creates a randomized 9 digit acc no.
     }
 }
 
-void dep(string name,int x,vector<int>&deposit,Queue &q)
+void dep(string name,int x,vector<int>&deposit,Queue &q)			// depositing money  
 {   
 	cout<<"Enter The account holder's name : "; cin>>name;
 	cout<<"Enter The amount to be deposited : "; cin>>x;
@@ -131,7 +131,7 @@ void dep(string name,int x,vector<int>&deposit,Queue &q)
 deposit[n]+=x;
 }
 	
-void withdraw(string name,int x,vector<int>&deposit,Queue &q)
+void withdraw(string name,int x,vector<int>&deposit,Queue &q)			// withdrawning money
 {   
 	cout<<"Enter The account holder's name : "; cin>>name;
 	cout<<"Enter The amount to be withdrawn : "; cin>>x;
@@ -139,7 +139,7 @@ void withdraw(string name,int x,vector<int>&deposit,Queue &q)
     deposit[n]-=x;
 }
 
-void display_all(map<string,int>&dict,vector<int>&deposit)
+void display_all(map<string,int>&dict,vector<int>&deposit)			// View all Accounts
 {
     int i=0;
     cout<<"Account holder's name"<<'\t'<<"Account no."<< '\t'<<"Balance"<<'\n';
@@ -150,7 +150,7 @@ void display_all(map<string,int>&dict,vector<int>&deposit)
 }
 
 
-void modify_account(string name, vector<int>&amount, Queue q)
+void modify_account(string name, vector<int>&amount, Queue q)			// Change account details
 {
 	cout<<"Enter The account holder's name : "; cin>>name;
 	cout<<"Enter The amount to be deposited : "; cin>>x;
@@ -159,7 +159,7 @@ void modify_account(string name, vector<int>&amount, Queue q)
 	
 	
 
-void intro()
+void intro()									// Intro Screen
 {
 	cout<<"\n\n\n\t  BANK";
 	cout<<"\n\n\tMANAGEMENT";
