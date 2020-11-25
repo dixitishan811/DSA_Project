@@ -7,7 +7,8 @@
 #include<vector>
 #include <bits/stdc++.h> 
 using namespace std;
-struct QNode { 
+struct QNode 
+{ 
     string data; 
 
     QNode* next; 
@@ -18,7 +19,8 @@ struct QNode {
     } 
 }; 
   
-struct Queue { 
+struct Queue 
+{ 
     int n=0;
     QNode *front, *rear; 
     Queue() 
@@ -48,63 +50,63 @@ struct Queue {
   
     // Function to remove 
     // a key from given queue q 
-    void deQueue() 
-    {   n--;
-        // If queue is empty, return NULL. 
-        if (front == NULL) 
-            return; 
-  
-        // Store previous front and 
-        // move front one node ahead 
-        QNode* temp = front; 
-        front = front->next; 
-  
-        // If front becomes NULL, then 
-        // change rear also as NULL 
-        if (front == NULL) 
-            rear = NULL; 
-  
-        delete (temp); 
-    } 
-int find(string x)
-    {   
-        
-        int cnt=0;
-        QNode* temp;
-        temp=front;
-        if(!x.compare(temp->data))
-            {   
-                
-                return cnt;
-            }
-    
-        while(temp->next!=NULL)
-        {  
-            temp=temp->next;
-            cnt++;
-            if(!x.compare(temp->data))
-            {   
-                return cnt;
-            }
-            
-            
-            
-        }
-        
-        return -1;
-    }
-void disp()
-    {    
-        
-        QNode* temp;
-        temp=front;
-        cout<<front->data<<endl;
-        while(temp->next!=NULL)
-        {   temp=temp->next;
-            cout<<temp->data<<endl;
-        }
-    }
-}; 
+	void deQueue() 
+	{   n--;
+	// If queue is empty, return NULL. 
+	if (front == NULL) 
+	    return; 
+
+	// Store previous front and 
+	// move front one node ahead 
+	QNode* temp = front; 
+	front = front->next; 
+
+	// If front becomes NULL, then 
+	// change rear also as NULL 
+	if (front == NULL) 
+	    rear = NULL; 
+
+	delete (temp); 
+	} 
+	int find(string x)
+	    {   
+
+		int cnt=0;
+		QNode* temp;
+		temp=front;
+		if(!x.compare(temp->data))
+		    {   
+
+			return cnt;
+		    }
+
+		while(temp->next!=NULL)
+		{  
+		    temp=temp->next;
+		    cnt++;
+		    if(!x.compare(temp->data))
+		    {   
+			return cnt;
+		    }
+
+
+
+		}
+
+		return -1;
+	    }
+	void disp()
+	    {    
+
+		QNode* temp;
+		temp=front;
+		cout<<front->data<<endl;
+		while(temp->next!=NULL)
+		{   temp=temp->next;
+		    cout<<temp->data<<endl;
+		}
+	    }
+	}; 
 
 void write_account(vector<int>&deposit,Queue &q,map<string,int>&dict)
 {   
@@ -140,6 +142,7 @@ void withdraw(string name,int x,vector<int>&deposit,Queue &q)
     int n=q.find(name);
     deposit[n]-=x;
 }
+
 void display_all(map<string,int>&dict,vector<int>&deposit)
 {
     int i=0;
@@ -150,7 +153,7 @@ void display_all(map<string,int>&dict,vector<int>&deposit)
     }
 }
   
-// Driven Program 
+// Driver Program 
 int main() 
 {   
     Queue q;
@@ -195,7 +198,6 @@ int main()
 		 case '8':
 			cout<<"\nThanks for using bank management system";
 			break;
-		 //default :cout<<"\a";
 		}
 
 	}while(ch!='8');
