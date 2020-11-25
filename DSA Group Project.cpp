@@ -7,23 +7,23 @@
 #include<vector>
 #include <bits/stdc++.h> 
 using namespace std;
-struct QNode 
+struct QNode                                            // queue node
 { 
-    string data; 
+    string data; 					// node element value				 
 
-    QNode* next; 
-    QNode(string d) 
-    { 
+    QNode* next; 					// next node in list
+    QNode(string d) 					// constructor
+    { 							
         data = d; 
-        next = NULL; 
+        next = NULL; 					//initiallizing
     } 
 }; 
   
-struct Queue 
+struct Queue 						
 { 
     int n=0;
     QNode *front, *rear; 
-    Queue() 
+    Queue() 						//constructor
     { 
         front = rear = NULL; 
     } 
@@ -155,6 +155,20 @@ void modify_account(string name, vector<int>&amount, Queue q)
 	cout<<"Enter The account holder's name : "; cin>>name;
 	cout<<"Enter The amount to be deposited : "; cin>>x;
   
+	
+	
+	
+
+void intro()
+{
+	cout<<"\n\n\n\t  BANK";
+	cout<<"\n\n\tMANAGEMENT";
+	cout<<"\n\n\t  SYSTEM";
+	cout<<"\n\n\n\nMADE BY: Ishaan Dixit\nPrasad Gole\nNiteesh Kumar\nSatwik";
+	cout<<"\n\nDSA Group Project";
+	cin.get();
+}
+	
 // Driver Program 
 int main() 
 {   
