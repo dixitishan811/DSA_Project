@@ -380,7 +380,8 @@ int main()
            	while(ch!='8'); 
 	    }
 	    else {
-	        cout<<"Wrong Credentials\n";
+	        cout<<"Wrong Credentials\n"<<endl;
+		break;
 	    }
 	
 	}
