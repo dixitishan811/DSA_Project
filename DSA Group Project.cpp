@@ -191,9 +191,9 @@ void display_all(map<int,string>&dict,vector<int>&deposit)			// View all Account
 
 void intro()									// Intro Screen
 {
-	cout<<"\n\n\n\t  BANK";
-	cout<<"\n\n\tMANAGEMENT";
-	cout<<"\n\n\t  SYSTEM";
+	cout<<"\n  BANK";
+	cout<<"\nMANAGEMENT";
+	cout<<"\n  SYSTEM";
 	cout<<"\n\n\n\nMADE BY: \n\t\tIshan Dixit\n\t\tPrasad Gole\n\t\tNiteesh Kumar\n\t\tSatwik Merla";
 	cout<<"\n\nDSA Group Project";
 	cin.get();
@@ -213,7 +213,7 @@ int main()
 
     do
 	{
-
+    system ("clear");
 	cout<<"MAIN MENU";
  	cout<<"\n01. NEW ACCOUNT";	
  	cout<<"\n02. DEPOSIT AMOUNT";
