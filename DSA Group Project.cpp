@@ -164,7 +164,7 @@ void intro()
 	cout<<"\n\n\n\t  BANK";
 	cout<<"\n\n\tMANAGEMENT";
 	cout<<"\n\n\t  SYSTEM";
-	cout<<"\n\n\n\nMADE BY: Ishaan Dixit\nPrasad Gole\nNiteesh Kumar\nSatwik";
+	cout<<"\n\n\n\nMADE BY: \n\t\tIshan Dixit\n\t\tPrasad Gole\n\t\tNiteesh Kumar\n\t\tSatwik Merla";
 	cout<<"\n\nDSA Group Project";
 	cin.get();
 }
@@ -176,6 +176,7 @@ int main()
     string name;
     map<string, int> dict;
     vector<int> deposit;
+    intro();
     int n,x;
     char ch;
 
