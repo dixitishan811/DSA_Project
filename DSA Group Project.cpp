@@ -229,13 +229,8 @@ void balance_enquiry(string name,int x,vector<int>&deposit,Queue &q) {
 }
 
 
-
-	
-	
-//	https://www.onlinegdb.com/online_c++_compiler#tab-stdin
-
 void intro()									// Intro Screen
-{https://www.onlinegdb.com/online_c++_compiler#tab-stdin
+{
 	cout<<"\n  BANK";
 	cout<<"\nMANAGEMENT";
 	cout<<"\n  SYSTEM";
