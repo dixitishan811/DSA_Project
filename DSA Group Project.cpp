@@ -296,11 +296,11 @@ int main()
 		}
 		
 	}
-	while(ch!='8');	
+	while(ch!='6');	
 	}
 	else if(r==1)
 	{
-	    string id = "2018A2PS0825H";
+	    string id = "2";
 	    int p = 12345;
 	    string y;
 	    cout<<"Enter ID-";
@@ -376,7 +376,7 @@ int main()
 	    }
 	    else {
 	        cout<<"Wrong Credentials\n"<<endl;
-		
+	
 	    }
 	
 	}
