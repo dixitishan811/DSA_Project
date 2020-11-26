@@ -177,7 +177,7 @@ void delete_account(map<int,string>&dict,Queue&q)
             q.front=temp->next;
             free(temp);
         }
-           
+ 
 else if(temp == NULL)  
     {  
         printf("\nUNDERFLOW\n");  
@@ -352,6 +352,7 @@ void display_all(map<int,string>&dict,vector<int>&deposit)			// View all Account
     {
         cout << itr->first<< '\t'  << '\t'<<'\t'<<itr->second << '\t'<<deposit[i]<<'\n';
     }
+    cout<<endl;
 }
 // void balance_enquiry(string name,int x,vector<int>&deposit,Queue &q) {
 //      cout<<"Enter The account holder's name : "; cin>>name;
@@ -371,7 +372,7 @@ void balance_enquiry(string name,int x,vector<int>&deposit,Queue &q) {
      cout<<"Enter The account holder's name : "; cin>>name;
      int n=q.find(name);
       cout<<"Balance"<<"\n";
-       cout<<deposit[n]<<"\n"; 
+      cout<<deposit[n]<<"\n"; 
     }
     if(pov==2) {
         cout<<"Create AN Account First\n";
@@ -490,6 +491,19 @@ int main()
 		case 6:
 			cout<<"\nThanks for using bank management system";
 			break;
+		case 0:
+		    char k;
+		    cout<<"You Have Pressed Emergency.Was It A Mistake?\n Y / N \n";
+		    cin>>k;
+		    if (k=='Y') 
+		    {
+		    cout<<"Police On The Way\n";
+		    }
+		    else
+		    {
+		    cout<<"Help Cancelled\n";    
+		    }
+		    
 		default :
 		cout<<"In Appropriate Entry\n";
 		}
@@ -504,7 +518,7 @@ int main()
 	    string y;
 	    cout<<"Enter ID-";
 	    cin>>y;
-	    cout<<"Enter Passcode-";
+	    cout<<"\nEnter Passcode-";
 	    int u;
 	    cin>>u;
 	    cout<<"\n";
@@ -583,7 +597,7 @@ int main()
 		    {
 		    cout<<"Help Cancelled\n";    
 		    }
-		    
+		    break;
 		}
 	
 	}
