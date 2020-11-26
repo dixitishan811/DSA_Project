@@ -376,7 +376,7 @@ int main()
 	    }
 	    else {
 	        cout<<"Wrong Credentials\n"<<endl;
-		break;
+		
 	    }
 	
 	}
