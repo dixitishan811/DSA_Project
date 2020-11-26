@@ -79,6 +79,8 @@ struct Queue
 		if(temp==NULL)
 		{
 		    cout<<"Empty"<<endl;
+		    front=NULL;
+		    rear=NULL;
 		}
 		else
 		{
@@ -162,10 +164,8 @@ void delete_account(map<int,string>&dict,Queue&q)
         QNode *prev;
         QNode *temp;
         temp=q.front;
-        if (q.front == NULL) 
-	    q.rear = NULL;
 
-        else if(temp->data==x)
+       if(temp->data==x)
         {
             q.front=temp->next;
             free(temp);
