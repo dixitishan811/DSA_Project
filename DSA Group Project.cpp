@@ -134,11 +134,18 @@ void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create 
 {   
     string name;								
     int n=0;									
-    cout<<"Enter number of accounts to be created : ";
-    cin>>n;									// creating multiple accounts at once
-    cout<<"Enter account holder name and the initial deposit amount:"<<endl;
+    cout<<"Enter number of accounts to be created : ";				// creating multiple accounts at once
+    cin>>n;	
+	if (n<=0)
+	{
+		cout<< "Enter integer number greater than 0:"<<endl;
+		cin>>n;
+	}
+
+	
     for(int i=0;i<n;i++)
     {
+	cout<<"Enter account holder name and the initial deposit amount in Account "<<i+1<<":"<<endl;
         int x;
         cin>>name;								// Account name
         cin>>x;									// Initial Deposit amount
@@ -146,7 +153,7 @@ void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create 
         q.enQueue(name);
         dict.insert(std::pair<int,string>(rand()%1000000000,name));		// creates a randomized 9 digit acc no.
     }
-
+	
     q.disp();
 }
 void delete_account(map<int,string>&dict,Queue&q)
@@ -202,18 +209,42 @@ else if(temp == NULL)
 	q.disp();
     }
 	
-	
 void dep(string name,int x,vector<int>&deposit,Queue &q)			// depositing money  
 {   
+    int  pop;
+    cout<<"Do You Have an Account?\n";
+    cout<<"1.YES \n2.NO\n";
+    cin>>pop;
+    if(pop==1) {
 	cout<<"Enter The account holder's name : "; cin>>name;
 	cout<<"Enter The amount to be deposited : "; cin>>x;
     int n=q.find(name);
 
-deposit[n]+=x;
+deposit[n]+=x; }
+if(pop==2)
+{
+    cout<<"Create An Account First:\n";
 }
-	
+if(pop!=1&&pop!=2) {
+    cout<<"In Appropriate Entry\n";
+}
+}
+// void dep(string name,int x,vector<int>&deposit,Queue &q)			// depositing money  
+// {   
+// 	cout<<"Enter The account holder's name : "; cin>>name;
+// 	cout<<"Enter The amount to be deposited : "; cin>>x;
+//     int n=q.find(name);
+
+// deposit[n]+=x;
+// }
+
 void withdraw(string name,int x,vector<int>&deposit,Queue &q)			// withdrawning money
 {   
+     int  poe;
+    cout<<"Do You Have an Account?\n";
+    cout<<"1.YES\n2.NO\n";
+    cin>>poe;
+    if(poe==1) {
 	cout<<"Enter The account holder's name : "; cin>>name;
 	cout<<"01.current\n02.savings\n";
 	int z;
@@ -254,10 +285,64 @@ void withdraw(string name,int x,vector<int>&deposit,Queue &q)			// withdrawning 
 	  cout<<"Balance"<<'\n';
 	  cout<<deposit[n]<<'\n';
 	}
-	
+    }
+    if(poe==2) {
+        cout<<"Create An Account First\n";
+    }
+    if(poe!=1&&poe!=2) {
+        cout<<"In Appropriate Entry\n";
+    }
 	 //cout<<"Account no."<<'\t'<<"Account holder's name"<< '\t'<<"Balance"<<'\n';
 	 
 }
+
+
+// void withdraw(string name,int x,vector<int>&deposit,Queue &q)			// withdrawning money
+// {   
+// 	cout<<"Enter The account holder's name : "; cin>>name;
+// 	cout<<"01.current\n02.savings\n";
+// 	int z;
+// 	cin>>z;
+// 	 int n=q.find(name);
+// 	if(z=1)
+// 	{
+// 	cout<<"Enter The amount to be withdrawn : "; cin>>x;	
+//         if(deposit[n]<x)
+//         {
+//         cout<<"N0 sufficient amount";
+//         }
+//         else
+//         {
+//         deposit[n]-=x;
+//         }
+// 	}
+// 	else
+// 	{
+// 	cout<<"Enter The amount to be withdrawn : "; cin>>x;	
+       
+//         if(deposit[n]<x)
+//         {
+//         cout<<"N0 sufficient amount.\n";
+//         }
+//         else
+//         {
+//         deposit[n]-=x;
+//         }
+// 	}
+// 	char e;
+// 	cout<<"Do you want to know your balance?\n";
+// 	cout<<" Y / N\n";
+// 	cin>>e;
+	
+// 	if(e=='Y') 
+// 	{
+// 	  cout<<"Balance"<<'\n';
+// 	  cout<<deposit[n]<<'\n';
+// 	}
+	
+// 	 //cout<<"Account no."<<'\t'<<"Account holder's name"<< '\t'<<"Balance"<<'\n';
+	 
+// }
 
 void display_all(map<int,string>&dict,vector<int>&deposit)			// View all Accounts
 {
@@ -268,26 +353,71 @@ void display_all(map<int,string>&dict,vector<int>&deposit)			// View all Account
         cout << itr->first<< '\t'  << '\t'<<'\t'<<itr->second << '\t'<<deposit[i]<<'\n';
     }
 }
+// void balance_enquiry(string name,int x,vector<int>&deposit,Queue &q) {
+//      cout<<"Enter The account holder's name : "; cin>>name;
+//      int n=q.find(name);
+//       cout<<"Balance"<<'\n';
+//        cout<<deposit[n]<<'\n';    
+// }
+
+
 void balance_enquiry(string name,int x,vector<int>&deposit,Queue &q) {
+     int  pov;
+    cout<<"Do You Have An Account?\n";
+    cout<<"1.YES\n2.NO\n";
+    cin>>pov;
+    if(pov==1) 
+    {
      cout<<"Enter The account holder's name : "; cin>>name;
      int n=q.find(name);
-      cout<<"Balance"<<'\n';
-       cout<<deposit[n]<<'\n';
-     
-     
-    
+      cout<<"Balance"<<"\n";
+       cout<<deposit[n]<<"\n"; 
+    }
+    if(pov==2) {
+        cout<<"Create AN Account First\n";
+    }
+    if(pov!=1&&pov!=2) {
+        cout<<"In Appropriate Entry\n";
+    }
 }
+
+
+void Total_Amount(map<int,string>&dict,vector<int>&deposit) 			//Total Amount with the bank (Only accessible to Manager)
+	    {
+	        int com;
+	        cout<<"Do your Bank Has Accounts?"<<endl;
+	        cout<<"01.Yes\n02.NO\n"<<endl;
+	        cin>>com;
+	        if(com==1) {
+	         int i=0;
+	         int m=0;
+              cout<<"Accounts Balance:\n";
+              for (auto itr = dict.begin(); itr != dict.end(); ++itr,++i) 
+        {
+              m=m+deposit[i];
+        }
+        cout<<m<<endl; }
+        if(com==2) {
+            cout<<"Please Create Accounts First"<<endl;
+        }
+        if(com!=1&&com!=2) {
+            cout<<"In Appropiate Entry"<<endl;
+        }
+    
+	    } 
+
 
 
 void intro()									// Intro Screen
 {
-	cout<<"\n  BANK";
-	cout<<"\nMANAGEMENT";
-	cout<<"\n  SYSTEM";
-	cout<<"\n\n\n\nMADE BY: \n\t\tIshan Dixit\n\t\tPrasad Gole\n\t\tNiteesh Kumar\n\t\tSatwik Merla";
-	cout<<"\n\nDSA Group Project";
+	cout<<"\n\t\t     BANK";
+	cout<<"\n\t\t  MANAGEMENT";
+	cout<<"\n\t\t    SYSTEM";
+	cout<<"\n\n\t\tDSA Group Project";
+	cout<<"\n\n\n\n\t   MADE BY: \n\t\tIshan Dixit\n\t\tPrasad Gole\n\t\tNiteesh Kumar\n\t\tSatwik Merla\n\n";
 	cin.get();
 }
+	
 	
 // Driver Program 
 int main() 
@@ -298,59 +428,79 @@ int main()
     vector<int> deposit;
     intro();
     int n,x;
-    char ch;
+    int ch;
     int r;
     cout<<"01.Bank Manager\n02.Customer\n";
     cin>>r;
+	if (r!=1 && r!=2)
+	{
+		cout<<"Enter a option number as 1 or 2."<<endl;
+		cin>>r;
+	}
     if(r==2)
     { 
     cout<<"Welcome...!\nHow was your Day\n";
     
-    do
+    	do
 	{
-	  
+
 	cout<<"MAIN MENU";
- 	cout<<"\n01. NEW ACCOUNT";	
- 	cout<<"\n02. DEPOSIT AMOUNT";
+	cout<<"\n01. NEW ACCOUNT";	
+	cout<<"\n02. DEPOSIT AMOUNT";
 	cout<<"\n03. WITHDRAW AMOUNT";
 	cout<<"\n04. BALANCE ENQUIRY";
 	cout<<"\n05. MODIFY AN ACCOUNT";
 	cout<<"\n06. EXIT";
-	//cout<<"\n07. MODIFY AN ACCOUNT";	cout<<"\n08. EXIT";
-	cout<<"\nSelect Your Option (1-8) ";
+	cout<<"\nSelect Your Option (1-6) ";
 	cout<<endl;
 	cin>>ch;
 	system ("clear");
 
 		switch(ch)
 		{
-		case '1':
+		case 1:
 			write_account(deposit, q,dict);
 			break;
-		case '2':
+		case 2:
 			dep( name, x,deposit, q);
 			break;
-		case '3': 
+		case 3: 
 			withdraw(name, x,deposit, q);
 			break;
-		case '4' :
-		    balance_enquiry(name, x,deposit, q);
+		case 4 :
+		    	balance_enquiry(name, x,deposit, q);
+		   	break;
+		case 5:
+			cout<<"Do you Have An Account\n";
+		cout<<"01.Yes\n02.N0\n";
+		int man;
+		cin>>man;
+		if(man==1) {
+			q.modify_account(dict); 
+			break; }
+		if(man==2) {
+		    cout<<"Create An Account First\n";
 		    break;
-		case '5':
-			q.modify_account(dict);
+		}
+		if(man!=1&&man!=2) {
+		    cout<<"In Appropriate Entry\n";
+		    break;
+		}
 			break;
-		 case '6':
+		case 6:
 			cout<<"\nThanks for using bank management system";
 			break;
+		default :
+		cout<<"In Appropriate Entry\n";
 		}
 		
 	}
-	while(ch!='6');	
+	while(ch!=6);	
 	}
 	else if(r==1)
 	{
-	    string id = "2";
-	    int p = 12345;
+	    string id = "1234";
+	    int p = 1234;
 	    string y;
 	    cout<<"Enter ID-";
 	    cin>>y;
@@ -371,45 +521,57 @@ int main()
 	cout<<"\n05. MODIFY AN ACCOUNT";
 	cout<<"\n06. DELETE AN ACCOUNT";
 	cout<<"\n07. Display All Account Details";
-	
-	//cout<<"\n07. MODIFY AN ACCOUNT";	cout<<"\n08. EXIT";
-	cout<<"\nSelect Your Option (1-8) ";
+	cout<<"\n08. Display total Amount in Bank";
+	cout<<"\n09. EXIT";
+	cout<<"\nSelect Your Option (1-9) ";
 	cout<<endl;
 	cin>>ch;
 	system ("clear");
 
 		switch(ch)
 		{
-		case '1':
+		case 1:
 			write_account(deposit, q,dict);
-
 			break;
-		case '2':
+		case 2:
 			dep( name, x,deposit, q);
 			break;
-		case '3': 
-
+		case 3: 
 			withdraw(name, x,deposit, q);
-			
 			break;
-	
-		case '7':
-			display_all(dict,deposit);
-			break;
-			
-		case '5':
-			q.modify_account(dict);
-			break;
-		case '4' :
+		case 4 :
 		    balance_enquiry(name, x,deposit, q);
 		    break;
-	    case '6' :
+		case 5:
+			cout<<"Do you Have An Account\n";
+			cout<<"01.Yes\n02.N0\n";
+			int man;
+			cin>>man;
+			if(man==1) {
+				q.modify_account(dict); 
+				break; }
+			if(man==2) {
+			    cout<<"Create An Account First\n";
+			    break;
+			}
+			if(man!=1&&man!=2) {
+			    cout<<"In Appropriate Entry\n";
+			    break;
+			}
+
+	    	case 6 :
 		    delete_account(dict,q);
 		    break;
-		case '8':
+		case 7:
+			display_all(dict,deposit);
+			break;
+		case 9:
 			cout<<"\nThanks for using bank management system";
 			break;
-		case '9':
+		case 8:
+			Total_Amount(dict,deposit);
+			break;
+		case 0:
 		    char k;
 		    cout<<"You Have Pressed Emergency.Was It A Mistake?\n Y / N \n";
 		    cin>>k;
@@ -425,7 +587,7 @@ int main()
 		}
 	
 	}
-           	while(ch!='8'); 
+           	while(ch!=8); 
 	    }
 	    else {
 	        cout<<"Wrong Credentials\n"<<endl;
@@ -433,5 +595,4 @@ int main()
 	    }
 	
 	}
-    
 }
