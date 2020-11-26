@@ -504,7 +504,7 @@ int main()
 	    string y;
 	    cout<<"Enter ID-";
 	    cin>>y;
-	    cout<<"\nEnter Passcode-";
+	    cout<<"Enter Passcode-";
 	    int u;
 	    cin>>u;
 	    cout<<"\n";
