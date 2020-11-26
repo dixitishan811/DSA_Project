@@ -29,7 +29,7 @@ struct Queue
     { 
   
         // Create a new LL node 
-        n++;                                            // increasing size of queue by 1
+                                                  
         QNode* temp = new QNode(x); 			// temporary node
   
         // If queue is empty, then 
@@ -124,7 +124,30 @@ struct Queue
     }
     
 	}
-void delete_account(map<int,string>&dict)
+
+	
+	}; 
+
+void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create account
+{   
+    string name;								
+    int n=0;									
+    cout<<"Enter number of accounts to be created : ";
+    cin>>n;									// creating multiple accounts at once
+    cout<<"Enter account holder name and the initial deposit amount:"<<endl;
+    for(int i=0;i<n;i++)
+    {
+        int x;
+        cin>>name;								// Account name
+        cin>>x;									// Initial Deposit amount
+        deposit.push_back(x);
+        q.enQueue(name);
+        dict.insert(std::pair<int,string>(rand()%1000000000,name));		// creates a randomized 9 digit acc no.
+    }
+
+    q.disp();
+}
+void delete_account(map<int,string>&dict,Queue&q)
     {
         string x;
 	    cout<<"Enter the account name to be deleted  :"<<endl;
@@ -138,13 +161,13 @@ void delete_account(map<int,string>&dict)
     }
         QNode *prev;
         QNode *temp;
-        temp=front;
-        if (front == NULL) 
-	    rear = NULL;
+        temp=q.front;
+        if (q.front == NULL) 
+	    q.rear = NULL;
 
         else if(temp->data==x)
         {
-            front=temp->next;
+            q.front=temp->next;
             free(temp);
         }
            
@@ -176,32 +199,10 @@ else if(temp == NULL)
 		    
 		}
         }
-	disp();
+	q.disp();
     }
 	
 	
-	
-	}; 
-
-void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create account
-{   
-    string name;								
-    int n=0;									
-    cout<<"Enter number of accounts to be created : ";
-    cin>>n;									// creating multiple accounts at once
-    cout<<"Enter account holder name and the initial deposit amount:"<<endl;
-    for(int i=0;i<n;i++)
-    {
-        int x;
-        cin>>name;								// Account name
-        cin>>x;									// Initial Deposit amount
-        deposit.push_back(x);
-        q.enQueue(name);
-        dict.insert(std::pair<int,string>(rand()%1000000000,name));		// creates a randomized 9 digit acc no.
-    }
-    q.disp();
-}
-
 void dep(string name,int x,vector<int>&deposit,Queue &q)			// depositing money  
 {   
 	cout<<"Enter The account holder's name : "; cin>>name;
@@ -403,7 +404,7 @@ int main()
 		    balance_enquiry(name, x,deposit, q);
 		    break;
 	    case '6' :
-		    q.delete_account(dict);
+		    delete_account(dict,q);
 		    break;
 		case '8':
 			cout<<"\nThanks for using bank management system";
