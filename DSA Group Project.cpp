@@ -45,26 +45,8 @@ struct Queue
         rear = temp; 
     } 
   
-    // Function to remove 
-    // a key from given queue q 
-	void deQueue() 					// Deletion or deQueuing
-	{   n--;
-	// If queue is empty, return NULL. 
-	if (front == NULL) 
-	    return; 
 
-	// Store previous front and 
-	// move front one node ahead 
-	QNode* temp = front; 				// temporary node
-	front = front->next; 
 
-	// If front becomes NULL, then 
-	// change rear also as NULL 
-	if (front == NULL) 
-	    rear = NULL; 
-
-	delete (temp); 					// freeing memory
-	} 
 	int find(string x)				// finding particular node 
 	    {   
 
@@ -93,10 +75,20 @@ struct Queue
 	    {   
 		QNode* temp;
 		temp=front;
+		cout<<"Current status of Queue :"<<endl;
+		if(temp==NULL)
+		{
+		    cout<<"Empty"<<endl;
+		}
+		else
+		{
+		    
+		
 		cout<<front->data<<endl;
 		while(temp->next!=NULL)
 		{   temp=temp->next;
 		    cout<<temp->data<<endl;
+		}
 		}
 	    }
 	void modify_account(map<int,string>&dict)                                      // Change account details
@@ -132,6 +124,62 @@ struct Queue
     }
     
 	}
+void delete_account(map<int,string>&dict)
+    {
+        string x;
+	    cout<<"Enter the account name to be deleted  :"<<endl;
+	    cin>>x;
+	   for (auto itr = dict.begin(); itr != dict.end(); ++itr) 
+    {   
+        if(itr->second==x)
+        {
+            dict.erase(itr->first);
+        }
+    }
+        QNode *prev;
+        QNode *temp;
+        temp=front;
+        if (front == NULL) 
+	    rear = NULL;
+
+        else if(temp->data==x)
+        {
+            front=temp->next;
+            free(temp);
+        }
+           
+else if(temp == NULL)  
+    {  
+        printf("\nUNDERFLOW\n");  
+        return;  
+    } 
+    else
+        {
+            
+        
+        while(temp->next!=NULL)
+		{   
+		    if((temp->next)->data==x)
+		    {
+		        prev=temp;
+		    }
+		    if(temp->data==x)
+		    {
+		        prev->next=temp->next;
+		        free(temp);
+		        break;
+		    }
+		    else
+		    {
+		        temp=temp->next;
+		    }
+		    
+		}
+        }
+	disp();
+    }
+	
+	
 	
 	}; 
 
@@ -151,6 +199,7 @@ void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create 
         q.enQueue(name);
         dict.insert(std::pair<int,string>(rand()%1000000000,name));		// creates a randomized 9 digit acc no.
     }
+    q.disp();
 }
 
 void dep(string name,int x,vector<int>&deposit,Queue &q)			// depositing money  
@@ -250,7 +299,7 @@ int main()
     int n,x;
     char ch;
     int r;
-    cout<<"01.Bank Manager\n02.Customer";
+    cout<<"01.Bank Manager\n02.Customer\n";
     cin>>r;
     if(r==2)
     { 
@@ -276,7 +325,6 @@ int main()
 		{
 		case '1':
 			write_account(deposit, q,dict);
-			q.disp();
 			break;
 		case '2':
 			dep( name, x,deposit, q);
@@ -320,7 +368,8 @@ int main()
 	cout<<"\n03. WITHDRAW AMOUNT";
 	cout<<"\n04. BALANCE ENQUIRY";
 	cout<<"\n05. MODIFY AN ACCOUNT";
-	cout<<"\n06. Display All Account Details";
+	cout<<"\n06. DELETE AN ACCOUNT";
+	cout<<"\n07. Display All Account Details";
 	
 	//cout<<"\n07. MODIFY AN ACCOUNT";	cout<<"\n08. EXIT";
 	cout<<"\nSelect Your Option (1-8) ";
@@ -332,7 +381,7 @@ int main()
 		{
 		case '1':
 			write_account(deposit, q,dict);
-			q.disp();
+
 			break;
 		case '2':
 			dep( name, x,deposit, q);
@@ -343,7 +392,7 @@ int main()
 			
 			break;
 	
-		case '6':
+		case '7':
 			display_all(dict,deposit);
 			break;
 			
@@ -352,6 +401,9 @@ int main()
 			break;
 		case '4' :
 		    balance_enquiry(name, x,deposit, q);
+		    break;
+	    case '6' :
+		    q.delete_account(dict);
 		    break;
 		case '8':
 			cout<<"\nThanks for using bank management system";
