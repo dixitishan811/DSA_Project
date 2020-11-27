@@ -140,7 +140,7 @@ void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create 
     {
         cin.clear();
         cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
-        cout << "Bad entry.  Enter a NUMBER: ";
+        cout << "Bad entry.Enter an integer: ";
         cin >> n;
     }
 
@@ -446,6 +446,7 @@ int main()
     int n,x;
     int ch;
     int r;
+    ineligible:
     cout<<"01.Bank Manager\n02.Customer\n";
     cin>>r;
 	if (r!=1 && r!=2)
@@ -504,7 +505,8 @@ int main()
 		}
 			break;
 		case 6:
-			cout<<"\nThanks for using bank management system";
+			cout<<"\nThanks for using bank management system"<<endl;
+			goto ineligible;
 			break;
 		case 0:
 		    char k;
@@ -612,7 +614,8 @@ int main()
 		    }
 		    break;
 		 case 9:
-			cout<<"\nThanks for using bank management system";
+			cout<<"\nThanks for using bank management system"<<endl;
+			goto ineligible; 
 			break;
 		}
 	
