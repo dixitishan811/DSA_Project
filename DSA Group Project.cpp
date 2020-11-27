@@ -136,6 +136,15 @@ void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create 
     int n=0;									
     cout<<"Enter number of accounts to be created : ";				// creating multiple accounts at once
     cin>>n;	
+    while(cin.fail())
+    {
+        cin.clear();
+        cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        cout << "Bad entry.  Enter a NUMBER: ";
+        cin >> n;
+    }
+
+
 	if (n<=0)
 	{
 		cout<< "Enter integer number greater than 0:"<<endl;
@@ -155,6 +164,7 @@ void write_account(vector<int>&deposit,Queue &q,map<int,string>&dict)		//create 
     }
 	
     q.disp();
+    
 }
 void delete_account(map<int,string>&dict,Queue&q)
     {
@@ -189,13 +199,18 @@ else if(temp == NULL)
         
         while(temp->next!=NULL)
 		{   
+		    
 		    if((temp->next)->data==x)
 		    {
 		        prev=temp;
+		        temp=temp->next;
+		        
 		    }
 		    if(temp->data==x)
-		    {
+		    {   
+		        
 		        prev->next=temp->next;
+		        cout<<temp->next;
 		        free(temp);
 		        break;
 		    }
@@ -579,9 +594,7 @@ int main()
 		case 7:
 			display_all(dict,deposit);
 			break;
-		case 9:
-			cout<<"\nThanks for using bank management system";
-			break;
+
 		case 8:
 			Total_Amount(dict,deposit);
 			break;
@@ -598,10 +611,13 @@ int main()
 		    cout<<"Help Cancelled\n";    
 		    }
 		    break;
+		 case 9:
+			cout<<"\nThanks for using bank management system";
+			break;
 		}
 	
 	}
-           	while(ch!=8); 
+           	while(ch!=9); 
 	    }
 	    else {
 	        cout<<"Wrong Credentials\n"<<endl;
