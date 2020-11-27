@@ -446,13 +446,17 @@ int main()
     int n,x;
     int ch;
     int r;
-    ineligible:
-    cout<<"01.Bank Manager\n02.Customer\n";
+    here:
+    cout<<"01.Bank Manager\n02.Customer\n03.Exit\n";
     cin>>r;
-	if (r!=1 && r!=2)
+	if (r!=1 && r!=2 && r!=3)
 	{
 		cout<<"Enter a option number as 1 or 2."<<endl;
 		cin>>r;
+	}
+	if(r==3)
+	{
+	    cout<<"\nThanks for using bank management system";
 	}
     if(r==2)
     { 
@@ -506,7 +510,7 @@ int main()
 			break;
 		case 6:
 			cout<<"\nThanks for using bank management system"<<endl;
-			goto ineligible;
+			goto here;
 			break;
 		case 0:
 		    char k;
@@ -615,7 +619,7 @@ int main()
 		    break;
 		 case 9:
 			cout<<"\nThanks for using bank management system"<<endl;
-			goto ineligible; 
+			goto here; 
 			break;
 		}
 	
